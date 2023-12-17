@@ -11,7 +11,7 @@ function saveDetailsinAPI(item){
     };
 
     console.log(obj)
-    axios.post("https://crudcrud.com/api/68f3e2aa223e4f9985e9b25c569e80e7/Data",obj)
+    axios.post("https://crudcrud.com/api/632ba6e0c770448d84009b8844c503bc/Data",obj)
     .then((response) => {
         console.log(response);
     }).catch((err) => {
@@ -20,7 +20,7 @@ function saveDetailsinAPI(item){
 }
 
 window.addEventListener("DOMContentLoaded", ()=>{  
-    axios.get("https://crudcrud.com/api/68f3e2aa223e4f9985e9b25c569e80e7/Data")  
+    axios.get("https://crudcrud.com/api/632ba6e0c770448d84009b8844c503bc/Data")  
     .then((response)=>{
         console.log(response)
         for( var i=0; i< response.data.length; i++){
@@ -40,24 +40,24 @@ function showItemonScreen(item) {
     // };
     const parentNode = document.getElementById("itemList");
     const childHTML = `<li id= ${item._id}> ${item.itemName}     ${item.description}     ${item.price}rs     ${item.quantity}
-                                    <button onclick= whenUserBuys1('${item.itemName}','${item.description}','${item.price}','${item.quantity}')>Buy 1</button>
+                                    <button onclick= whenUserBuys1('${item}')>Buy 1</button>
                                     <button onclick= whenUserBuys2('${item}')>Buy 2</button>
                         </li>`
 
     parentNode.innerHTML = parentNode.innerHTML + childHTML;
 }
 
-function whenUserBuys1(itemname, itemdes, itemprice, itemquantity){
+function whenUserBuys1(item){
     // item.preventDefault();
-    a = itemquantity -1;
-    obj = {
-        "itemName": itemname,
-        "description": itemdes,
-        "price": itemprice,
-        "quantity": a
-    };
+    obj={
+        "_id": item._id,
+        "itemName": item.itemName,
+        "description": item.description,
+        "price": item.price,
+        "quantity": item.quantity,
+    }
     
-    axios.put("https://crudcrud.com/api/68f3e2aa223e4f9985e9b25c569e80e7/Data", obj )
+    axios.put(`https://crudcrud.com/api/632ba6e0c770448d84009b8844c503bc/Data/${item}`, obj)
     .then((response) => {
         console.log(response);
     }).catch((err) => {
@@ -74,7 +74,7 @@ function whenUserBuys2(item){
         "quantity": a
     };
     
-    axios.put("https://crudcrud.com/api/68f3e2aa223e4f9985e9b25c569e80e7/Data", obj )
+    axios.put("https://crudcrud.com/api/632ba6e0c770448d84009b8844c503bc/Data", obj )
     .then((response) => {
         console.log(response);
     }).catch((err) => {
