@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Just a registration page</title>
         <script src="API_que_dom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
-        <form>
-            <label id="name">Enter your name:</label>
-            <input id="name" type="text">
-            <label id="age"> Enter your age:</label>
-            <input id="age" type="number">
-            <label id="number">Enter your phone number</label>
-            <input id="number" type="number">
+        <form id="addForm">
+            <input type="text" id="name" placeholder="Enter Name">
+            <input type="number" id="age" placeholder="Enter Age">
+            <button type="submit">Submit</button>
         </form>
+        <ul id = 'itemList'>
+            <li id="items" class="list-group-item">!st ele</li>
+        </ul>
     </body>
 </html>
